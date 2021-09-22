@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import { loadLanguageAsync, localeParamName } from '@/lang/i18n-setup';
 
 Vue.use(VueRouter)
 
@@ -20,10 +21,22 @@ const routes = [
   }
 ]
 
-const router = new VueRouter({
+const vueRouter = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
 
-export default router
+// Set i18n locale
+
+vueRouter.beforeEach((to, from, next) => {
+  let lang = localStorage.getItem(localeParamName);
+
+  if (!['en', 'ru'].includes(lang)) {
+    lang = 'en';
+  }
+
+  loadLanguageAsync(lang).then(() => next());
+});
+
+export default vueRouter;
