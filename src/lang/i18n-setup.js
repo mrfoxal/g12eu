@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import axios from 'axios';
-import messages from './en';
+import messagesEn from './en';
 
 Vue.use(VueI18n);
 
@@ -16,7 +16,9 @@ if (!selectedLocale) {
 export const i18n = new VueI18n({
   locale: 'en',
   fallbackLocale: 'en',
-  messages: { en: messages },
+  messages: {
+    en: messagesEn,
+  },
 });
 
 const loadedLanguages = ['en'];
@@ -26,6 +28,7 @@ function setI18nLanguage(lang) {
   i18n.locale = lang;
   axios.defaults.headers.common['Accept-Language'] = lang;
   document.querySelector('html').setAttribute('lang', lang);
+  document.title = i18n.t('site.name')
 
   return lang;
 }

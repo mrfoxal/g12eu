@@ -1,68 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">
-        {{ $t('menu.home') }}
-      </router-link> |
-      <router-link to="/about">
-        {{ $t('menu.about') }}
-      </router-link>
-      <select
-          v-model="selectedLanguage"
-          @change="changeLang($event.target.value)">
-        <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">
-          {{ lang }}
-        </option>
-      </select>
+  <div id="app" class="container mx-auto max-w-screen-lg">
+    <navbar />
+    <div class="bg-white">
+      <router-view/>
     </div>
-    <router-view/>
+    <footer>
+      <div class="py-4 px-4">
+        <p class="font-light text-center text-sm">
+          {{ $t('site.copyright') }}<br>
+          {{ $t('site.powered') }}
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import { loadLanguageAsync, localeParamName } from '@/lang/i18n-setup';
+import Navbar from '@/components/Navbar.vue'
 
 export default {
-  data() {
-    return {
-      selectedLanguage: 'en',
-      langs: ['en', 'ru'],
-    };
-  },
-  methods: {
-    changeLang(lang) {
-      loadLanguageAsync(lang).then();
-    },
-  },
-  created() {
-    const selectedLocale = localStorage.getItem(localeParamName);
-
-    if (selectedLocale) {
-      this.selectedLanguage = selectedLocale;
-    }
+  components: {
+    Navbar,
   },
 };
 </script>
-
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>

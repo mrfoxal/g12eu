@@ -9,6 +9,7 @@ import './assets/tailwind.css'
 Vue.config.productionTip = false
 
 Vue.use(VueI18n)
+Vue.use(require('vue-scrollto'), {offset: -70,})
 
 new Vue({
   i18n,
