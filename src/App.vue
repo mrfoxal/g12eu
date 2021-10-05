@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container mx-auto max-w-screen-lg">
-    <navbar />
+    <navbar/>
     <div class="bg-white">
       <router-view/>
     </div>
@@ -22,5 +22,5 @@ export default {
   components: {
     Navbar,
   },
-};
+}
 </script>

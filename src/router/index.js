@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import { loadLanguageAsync, localeParamName } from '@/lang/i18n-setup';
+import { loadLanguageAsync, localeParamName } from '@/lang/i18n-setup'
 
 Vue.use(VueRouter)
 
@@ -14,14 +14,14 @@ const routes = [
   {
     path: '/imprint',
     name: 'Imprint',
-    component: () => import('../views/Imprint.vue')
+    component: () => import('../views/Imprint.vue'),
   },
 ]
 
 const vueRouter = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 })
 
 // Set i18n locale
@@ -34,6 +34,6 @@ vueRouter.beforeEach((to, from, next) => {
   }
 
   loadLanguageAsync(lang).then(() => next());
-});
+})
 
 export default vueRouter;
