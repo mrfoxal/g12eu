@@ -59,5 +59,9 @@ export default {
     contacts: {
       title: 'Contact',
     },
+    error404: {
+      title: 'Error 404',
+      text: 'Page not found.',
+    },
   }
 };

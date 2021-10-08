@@ -59,5 +59,9 @@ export default {
     contacts: {
       title: 'Контакты',
     },
+    error404: {
+      title: 'Ошибка 404',
+      text: 'Страница не найдена.',
+    },
   }
 };

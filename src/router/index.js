@@ -16,6 +16,12 @@ const routes = [
     name: 'Imprint',
     component: () => import('../views/Imprint.vue'),
   },
+  // when not matches, show error page
+  {
+    path: '*',
+    name: 'Error404',
+    component: () => import('../views/Error404.vue'),
+  },
 ]
 
 const vueRouter = new VueRouter({
