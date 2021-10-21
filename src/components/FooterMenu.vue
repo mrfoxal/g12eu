@@ -1,6 +1,6 @@
 <template>
   <div class="bg-purple-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3 rounded-br-lg rounded-bl-lg">
-    <div class="flex items-center justify-between px-4 py-3 sm:p-0">
+    <div class="flex flex-col md:flex-row sm:flex-col sm:p-0 items-center justify-between px-4 py-3 ">
       <a class="mt-1 block px-2 py-1 text-white rounded hover:bg-purple-700 sm:mt-0 sm:ml-2"
          href="https://t.me/NeuesLebenPL" target="_blank">
         Telegram
